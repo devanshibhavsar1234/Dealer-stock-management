@@ -1,0 +1,36 @@
+.navbar {
+    background-color: #47536e; /* Dark background color */
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #FDFFE2; /* Light text color */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    border-radius: 10px;
+}
+
+
+.navbar-nav .nav-link:hover {
+    background-color: #376aca; /* Hover background color */
+    color: #FDFFE2; /* Hover text color */
+    
+}
+
+.navbar-toggler-icon {
+    background-color: #FDFFE2; /* Toggler icon color */
+}
+
+.navbar-toggler {
+    border-color: #FDFFE2; /* Toggler border color */
+}
+
+
+.btn-outline-success {
+    color: #83B4FF; /* Button text color */
+    border-color: #83B4FF; /* Button border color */
+}
+
+.btn-outline-success:hover {
+    background-color: #376aca; /* Button background color on hover */
+    color: #FDFFE2; /* Button text color on hover */
+}

@@ -1,0 +1,22 @@
+.card {
+  background-color: #1B262C;
+  border-color: #0F4C75;
+}
+
+.card-header {
+  background: rgb(124,185,232);
+  background: radial-gradient(circle, rgba(124,185,232,1) 0%, rgba(137,207,240,1) 22%, rgba(108,180,238,1) 54%, rgba(0,102,178,1) 83%);
+}
+
+.card-header h3,
+.card-header p {
+  color: #034694;
+}
+
+.card-body h5 {
+  color: #BBE1FA;
+}
+
+.card-body ul li {
+  color: #BBE1FA;
+}

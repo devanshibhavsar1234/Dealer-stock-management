@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #222831;
+    color: #EEEEEE;
+  }
+
+  .toast-container {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1050;
+    width: fit-content; 
+    margin-top: 5px;
+  }

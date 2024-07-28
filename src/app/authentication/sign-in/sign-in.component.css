@@ -1,0 +1,12 @@
+.card.border-light-subtle.shadow-sm {
+    background-color: rgba(90, 91, 91, 0.854); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Blur effect for Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 10px; /* Rounded corners for a smoother look */
+}
+
+h2, h3, a{
+    color: #ffffff;
+}

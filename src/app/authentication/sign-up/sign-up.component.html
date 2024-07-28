@@ -1,0 +1,85 @@
+<section class="p-3 p-md-4 p-xl-5">
+  <div class="container">
+    <div class="row justify-content-center m-5">
+      <div class="col-8 col-xxl-11 m-5">
+        <div class="card border-light-subtle shadow-sm">
+          <div class="row g-0">
+            <div class="col-12 col-md-6">
+              <img class="img-fluid rounded-start w-90 h-90 object-fit-cover" loading="lazy"
+               src="../../../assets/Logistics-amico.svg" alt="Welcome back you've been missed!">
+            </div>
+            <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+              <div class="col-12 col-lg-11 col-xl-10">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="mb-5">
+                        <div class="text-center mb-4">
+                          <h2>Stock4Service</h2>
+                            </div>
+                            <div class="text-center mb-4">
+                              <h3>Sign up</h3>
+                                </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <form [formGroup]="validateForm" (ngSubmit)="register()">
+                    <div class="row gy-3 overflow-hidden">
+                      <div class="col-12">
+                        <div class="form-floating mb-3">
+                          <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" formControlName="email">
+                          <label for="email" class="form-label">Email address</label>
+                          <div *ngIf="validateForm.get('email').dirty && validateForm.get('email').invalid" class="text-danger">
+                            <div *ngIf="validateForm.get('email').errors?.['required']">*Email is required</div>
+                            <div *ngIf="validateForm.get('email').errors?.['email']">*Please enter a valid email address</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12">
+                        <div class="form-floating mb-3">
+                          <input type="password" class="form-control" id="password" name="Password" placeholder="Password" formControlName="password">
+                          <label for="password" class="form-label">Password</label>
+                          <div *ngIf="validateForm.get('password').dirty && validateForm.get('password').invalid" class="text-danger">
+                            <div *ngIf="validateForm.get('password').errors?.['required']">*Password is required</div>
+                            <div *ngIf="validateForm.get('password').errors?.['minlength']">*Password must be at least 8 characters long</div>
+                            <div *ngIf="validateForm.get('password').errors?.['pattern']">*Password cannot contain spaces</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12">
+                        <div class="d-grid">
+                          <button type="submit" class="btn btn-primary btn-lg" [disabled]="!validateForm.valid">Sign Up</button>
+                        </div>
+                      </div>
+
+                      <div class="col-12 mt-3">
+                        <p class="text-center">Already have an account? <a routerLink="/sign-in" class="text-decoration-none lead">Login</a></p>
+                      </div>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+<div class="toast-container">
+  <div id="toastNotification" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        {{ toastMessage }}
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,74 @@
+<app-header>
+  <h5 class="mt-2">Welcome, {{ user.email }}</h5>
+</app-header>
+
+<div class="container mt-4">
+  <div *ngIf="user">
+    <div *ngIf="user.role === 'Dealer'">
+      <div class="upper-part">
+        <h3>Select Mechanic</h3>
+        <select [(ngModel)]="selectedMechanic" class="form-select w-25 mb-3" aria-label="Select Mechanic">
+          <option value="" disabled>--Select Mechanic--</option>
+          <option *ngFor="let mechanic of mechanics" [ngValue]="mechanic">{{ mechanic.name }}</option>
+        </select>
+
+        <h3 class="mt-4">Parts</h3>
+        <div class="row g-4">
+          <div class="col-md-4" *ngFor="let part of parts">
+            <div class="card h-100 bg-dark-subtle text-black">
+              <div class="card-body">
+                <h5 class="card-title">{{ part.name }}</h5>
+                <p class="card-text">{{ part.description }}</p>
+                <p class="card-text">Stock Quantity: {{ part.stockQuantity }}</p>
+                <div class="input-group mb-3">
+                  <button class="btn btn-outline-secondary" type="button" (click)="decrementQuantity(part)" [disabled]="!selectedMechanic || part.quantity <= 0">-</button>
+                  <input type="text" class="form-control text-center" [(ngModel)]="part.quantity" readonly>
+                  <button class="btn btn-outline-secondary" type="button" (click)="incrementQuantity(part)" [disabled]="!selectedMechanic || part.stockQuantity <= 0 || part.quantity >= part.stockQuantity">+</button>
+                  <button class="btn btn-primary mx-lg-3" type="button" (click)="addToCart(part, selectedMechanic, part.quantity)" [disabled]="!selectedMechanic || !part.quantity  || part.stockQuantity <= 0">Add to Cart</button>
+                  <span *ngIf="part.stockQuantity === 0">Out of stock</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lower part: Cart details and transaction completion -->
+      <div class="lower-part mt-4">
+        <h3>Cart Details</h3>
+        <div class="table-responsive">
+          <table class="table table-bordered table-primary table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Part Name</th>
+                <th>Mechanic</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngIf="cartItems.length === 0">
+                <tr>
+                  <td colspan="3" class="text-center py-4">
+                    <img src="../../../assets/cart4.svg" alt="Cart" class="img-fluid mb-2">
+                    <br>
+                    Cart is empty
+                  </td>
+                </tr>
+              </ng-container>
+              <tr *ngFor="let item of cartItems">
+                <td>{{ item.part.name }}</td>
+                <td>{{ item.mechanic.name }}</td>
+                <td>{{ item.quantity }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button class="btn btn-success mt-3" (click)="completeTransaction()" [disabled]="cartItems.length === 0">Complete Transaction</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!user" class="mt-4">
+    <p>Please log in to view mechanics and parts.</p>
+  </div>
+</div>
